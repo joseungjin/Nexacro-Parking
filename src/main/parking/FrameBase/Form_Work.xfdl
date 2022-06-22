@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Form_Work" width="1280" height="670" titletext="Form_Work" onload="Form_Work_onload">
+    <Layouts>
+      <Layout width="1280" height="670" screenid="Desktop_screen">
+        <WebBrowser id="WebBrowser00" taborder="0" left="0" top="0" onloadcompleted="WebBrowser00_onloadcompleted" bottom="0" right="0"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.Form_Work_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	var url = nexacro._project_url+"kakaoMap.html"
+	this.WebBrowser00.set_url(url);
+	
+	var dom = this.WebBrowser00.getProperty( "document" ).getProperty("body");
+	var kakaoMap;
+	kakaoMap += '<div id="map" style="width:100%;height:1000px;"></div>';
+	kakaoMap += '<script>';
+	kakaoMap += 'var container = document.getElementById("map");';
+	kakaoMap += 'var options = { center: new kakao.maps.LatLng(33.450701, 126.570667),level: 3}';
+	kakaoMap += 'var map = new kakao.maps.Map(container, options);';
+	kakaoMap += '</script>';
+	
+	dom.setProperty("innerHTML",kakaoMap);
+	
+};
+
+this.WebBrowser00_onloadcompleted = function(obj:nexacro.WebBrowser,e:nexacro.WebLoadCompEventInfo)
+{
+
+};
+]]></Script>
+  </Form>
+</FDL>
